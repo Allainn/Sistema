@@ -1,0 +1,159 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 2rem;
+    margin-top: 1.25rem;
+    /* margin-bottom: 1.25rem; */
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+    background-color: #57a900;
+    background-image: -moz-linear-gradient(top, #70d900, #57a900);
+    background-image: -ms-linear-gradient(top, #70d900, #57a900);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+    background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+    background-image: -o-linear-gradient(top, #70d900, #57a900);
+    background-image: linear-gradient(top, #70d900, #57a900);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+    background-color: #57a900;
+}
+
+/* div.container a.navbar-brand > img {
+    display: inline;
+    margin-right: 4px;
+    margin-top: -2px;
+} */
+
+div.card {
+    margin: 0 auto;    
+}
+
+.desativar, .deletar {
+    background: #ff574d;
+    border-color: #f00;
+}
+
+.desativar:hover,
+.desativar:active,
+.desativar.active,
+.desativar.disabled,
+.desativar[disabled],
+.deletar:hover,
+.deletar:active,
+.deletar.active,
+.deletar.disabled,
+.deletar[disabled] {
+    background-color: #f00;
+    border-color: #ff574d;
+}
+
+.ativar {
+    background: #39e01b;
+    border-color: #25e300;
+}
+
+.ativar:hover,
+.ativar:active,
+.ativar.active,
+.ativar.disabled,
+.ativar[disabled] {
+    background-color: #1bd100;
+    border-color: #32e300;
+}
+
+.nome-user{
+    color: white;
+    padding-right: 2rem;
+}
+
+div.deslogar{
+    display: block;
+    float: right;
+}
+
+body.principal{
+    height: 100vh;
+}
+
+div.conteudo{
+    width: 80%;
+    height: 100%;
+    float: right;
+    max-width: 99%;
+    background-color: rgb(235, 235, 235);
+    overflow:auto;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.menu{
+    float: left;
+    background-color: #2E2E2E;
+    border-right: 2px solid #35BF5C;
+    width: 20%;
+    height: 100%;
+}
+
+.menu li {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+.menu li:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab li.active {
+    background-color: #ccc;
+}
+
+
+footer.rodape{
+    border-top: 2px solid #35BF5C;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    text-align: center;
+    background: #2E2E2E;
+    color: white;
+}
+
+.rodape p{
+    margin-top: 10px;
+}
+
+#submitbutton {
+    margin-bottom: 10px;
+}
+
+label {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    /* align-items: baseline; */
+    flex-direction: column !important;
+    /* justify-content: flex-start; */
+    padding: 5px;
+}
+

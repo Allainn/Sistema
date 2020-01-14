@@ -1,0 +1,56 @@
+<?php
+    $title = 'Produtos ';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+
+<p>
+    <a class="btn btn-primary" href="<?=$this->url(
+        'application',
+        array(
+            'action'=>'edit',
+            'controller'=>'produto'
+        )
+    )?>">Novo produto</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nome</th>
+    <th>Tipo</th>
+    <th>Preço Compra</th>
+    <th>Preço Venda</th>
+    <th>Preço Serviço</th>
+    <th>Quantidade</th>
+    <th>Observação</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->models as $model):?>
+<tr>
+    <td><?=$this->escapeHtml($model->nome)?></td>
+    <td><?=$this->escapeHtml($model->tipoProduto->descricao)?></td>
+    <td><?=$this->escapeHtml($this->currencyFormat($model->precoCompra,"BRL","pt_BR"))?></td>
+    <td><?=$this->escapeHtml($this->currencyFormat($model->precoVenda,"BRL","pt_BR"))?></td>
+    <td><?=$this->escapeHtml($this->currencyFormat($model->precoServico,"BRL","pt_BR"))?></td>
+    <td><?=$this->escapeHtml($model->quantidade)?></td>
+    <td><?=$this->escapeHtml($model->observacao)?></td>
+    <td>
+        <a class='btn btn-primary btn-block' href="<?=$this->url('application',
+            array(
+                'action'=>'edit',
+                'controller'=>'produto',
+                'key' => $model->id
+            )
+        )?>">Editar</a>
+       <button class='btn btn-primary btn-block deletar' url="<?=$this->url('application',
+            array(
+                'action'=>'delete',
+                'controller'=>'produto',
+                'key' => $model->id
+            )
+        )?>">Remover</a>
+    </td>
+</tr>
+<?php endforeach ?>
+</table>
+<?= $this->inlineScript() ?>

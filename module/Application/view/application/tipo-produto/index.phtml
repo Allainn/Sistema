@@ -1,0 +1,44 @@
+<?php
+    $title = 'Tipos Produto ';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+
+<p>
+    <a class="btn btn-primary" href="<?=$this->url(
+        'application',
+        array(
+            'action'=>'edit',
+            'controller'=>'tipoProduto'
+        )
+    )?>">Novo tipo produto</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Descrição</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->models as $model):?>
+<tr>
+    <td><?=$this->escapeHtml($model->descricao)?></td>
+    <td>
+        <a class='btn btn-primary btn-block' href="<?=$this->url('application',
+            array(
+                'action'=>'edit',
+                'controller'=>'tipoProduto',
+                'key' => $model->id
+            )
+        )?>">Editar</a>
+        <button class='btn btn-primary btn-block deletar' url="<?=$this->url('application',
+            array(
+                'action'=>'delete',
+                'controller'=>'tipoProduto',
+                'key' => $model->id
+            )
+        )?>">Remover</a>
+    </td>
+</tr>
+<?php endforeach ?>
+</table>
+<?= $this->inlineScript() ?>

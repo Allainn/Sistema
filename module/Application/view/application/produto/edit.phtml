@@ -1,0 +1,66 @@
+<?php
+    $this->inlineScript()->prependFile($this->basePath('js/script.js'));
+    $title = $this->title . ' Produto';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'application',
+        [
+            'action' => 'save',
+            'controller' => 'produto'
+        ]));
+    
+    $form->prepare();
+?>
+<div class="form-group">
+    <?php 
+        echo $this->form()->openTag($form);
+        echo $this->formRow($form->get('id'));
+        echo $this->formRow($form->get('nome'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('tb_tipo_produto_id'));
+    ?>
+</div>
+
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('preco_compra'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('preco_venda'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('preco_servico'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('quantidade'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('observacao'));
+    ?>
+</div>
+
+<?php 
+    echo $this->formRow($form->get('submit'));
+    echo $this->form()->closeTag();
+?>

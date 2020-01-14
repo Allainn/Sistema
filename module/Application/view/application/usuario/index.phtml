@@ -1,0 +1,44 @@
+<?php
+    $title = 'Usuários ';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+
+<p>
+    <a class="btn btn-primary" href="<?=$this->url(
+        'application',
+        array(
+            'action'=>'edit',
+            'controller'=>'usuario'
+        )
+    )?>">Novo usuário</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nome Completo</th>
+    <th>Tipo Usuário</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->models as $model):?>
+<tr>
+    <td><?=$this->escapeHtml($model->nome." ".$model->sobrenome)?></td>
+    <td><?=$this->escapeHtml($model->tipoUsuario->descricao)?></td>
+    <td>
+        <a class='btn btn-primary btn-block' href="<?=$this->url('application',
+            array(
+                'action'=>'edit',
+                'controller'=>'usuario',
+                'key' => $model->id
+            )
+        )?>">Editar</a>
+        <?php if($model->status == 1) {
+            echo("<button class='desativar btn btn-primary btn-block' url='".$this->url('application',array('action'=>'ativar','controller'=>'usuario','key' => $model->id, 'status' => '0'))."'>Desativar</button>");
+        } else {
+            echo("<button class='ativar btn btn-primary btn-block' url='".$this->url('application',array('action'=>'ativar','controller'=>'usuario','key' => $model->id, 'status' => '1'))."'>Ativar</button>");
+        }?>
+    </td>
+</tr>
+<?php endforeach ?>
+</table>
+<?= $this->inlineScript() ?>

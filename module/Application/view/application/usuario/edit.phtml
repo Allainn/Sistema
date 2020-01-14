@@ -1,0 +1,58 @@
+<?php
+    $title = $this->title . ' Usuário';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'application',
+        [
+            'action' => 'save',
+            'controller' => 'usuario'
+        ]));
+    
+    $form->prepare();
+?>
+<div class="form-group">
+    <?php 
+        echo $this->form()->openTag($form);
+        echo $this->formRow($form->get('id'));
+        echo $this->formRow($form->get('nome'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('sobrenome'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('login'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('senha'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('tb_tipo_usuarios_id'));
+    ?>
+</div>
+
+<div class="form-check">
+    <?php 
+        echo $this->formRow($form->get('status'));
+    ?>
+</div>
+
+<?php 
+    echo $this->formRow($form->get('submit'));
+    echo $this->form()->closeTag();
+?>

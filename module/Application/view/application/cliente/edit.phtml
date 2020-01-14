@@ -1,0 +1,59 @@
+<?php
+    $this->inlineScript()->prependFile($this->basePath('js/script.js'));
+    $title = $this->title . ' Cliente';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'application',
+        [
+            'action' => 'save',
+            'controller' => 'cliente'
+        ]));
+    
+        $form->prepare();
+        ?>
+<div class="form-group">
+    <?php 
+        echo $this->form()->openTag($form);
+        echo $this->formRow($form->get('id'));
+        echo $this->formRow($form->get('nome'));
+        ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('cpf'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('endereco'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('telefone'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('celular'));
+    ?>
+</div>
+
+<div class="form-group">
+    <?php 
+        echo $this->formRow($form->get('email'));
+    ?>
+</div>
+
+<?php 
+    echo $this->formRow($form->get('submit'));
+    echo $this->form()->closeTag();
+?>

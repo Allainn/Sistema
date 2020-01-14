@@ -1,0 +1,54 @@
+<?php
+    $title = 'Clientes ';
+    $this->headTitle($title);
+?>
+<h1><?=$this->escapeHtml($title)?></h1>
+
+<p>
+    <a class="btn btn-primary" href="<?=$this->url(
+        'application',
+        array(
+            'action'=>'edit',
+            'controller'=>'cliente'
+        )
+    )?>">Novo cliente</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nome</th>
+    <th>Endereço</th>
+    <th>Telefone</th>
+    <th>Celular</th>
+    <th>CPF</th>
+    <th>E-mail</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->models as $model):?>
+<tr>
+    <td><?=$this->escapeHtml($model->nome)?></td>
+    <td><?=$this->escapeHtml($model->endereco)?></td>
+    <td><?=$this->escapeHtml($model->telefone)?></td>
+    <td><?=$this->escapeHtml($model->celular)?></td>
+    <td><?=$this->escapeHtml($model->cpf)?></td>
+    <td><?=$this->escapeHtml($model->email)?></td>
+    <td>
+        <a class='btn btn-primary btn-block' href="<?=$this->url('application',
+            array(
+                'action'=>'edit',
+                'controller'=>'cliente',
+                'key' => $model->id
+            )
+        )?>">Editar</a>
+       <button class='btn btn-primary btn-block deletar' url="<?=$this->url('application',
+            array(
+                'action'=>'delete',
+                'controller'=>'cliente',
+                'key' => $model->id
+            )
+        )?>">Remover</a>
+    </td>
+</tr>
+<?php endforeach ?>
+</table>
+<?= $this->inlineScript() ?>

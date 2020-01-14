@@ -18,7 +18,8 @@
                 'name' => 'descricao',
                 'attributes' => array(
                     'type' => 'text',
-                    'autofocus' => 'autofocus'
+                    'autofocus' => 'autofocus',
+                    'class' => 'form-control'
                 ),
                 'options' => array(
                     'label' => 'Descrição: ',

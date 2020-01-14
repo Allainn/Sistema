@@ -21,6 +21,8 @@ use Application\Model\TipoProdutoTable;
 use Application\Model\TipoProduto;
 use Application\Model\ProdutoTable;
 use Application\Model\Produto;
+use Application\Model\ClienteTable;
+use Application\Model\Cliente;
 
 return [
     'router' => [
@@ -63,6 +65,7 @@ return [
             'usuario' => Controller\UsuarioController::class,
             'tipoProduto' => Controller\TipoProdutoController::class,
             'produto' => Controller\ProdutoController::class,
+            'cliente' => Controller\ClienteController::class,
             'application' => Controller\IndexController::class,
         ],
         'factories' => [
@@ -94,6 +97,11 @@ return [
                 $parentTable = $sm->get(TipoProdutoTable::class);
                 $sessionManager = new SessionManager();
                 return new Controller\ProdutoController($table, $parentTable, $sessionManager);
+            },
+            Controller\ClienteController::class => function($sm){
+                $table = $sm->get(ClienteTable::class);
+                $sessionManager = new SessionManager();
+                return new Controller\ClienteController($table, $sessionManager);
             },
         ],
     ],
@@ -171,6 +179,17 @@ return [
                 $resultSetPrototype = new ResultSet();
                 $resultSetPrototype->setArrayObjectPrototype(new Produto());
                 return new TableGateway('tb_produtos', $dbAdapter, null, $resultSetPrototype);
+            },
+            ClienteTable::class => function($sm) {
+                $tableGateway = $sm->get('ClienteTableGateway');
+                $table = new ClienteTable($tableGateway);
+                return $table;
+            },
+            'ClienteTableGateway' => function($sm) {
+                $dbAdapter = $sm->get('Zend\Db\Adapter');
+                $resultSetPrototype = new ResultSet();
+                $resultSetPrototype->setArrayObjectPrototype(new Cliente());
+                return new TableGateway('tb_clientes', $dbAdapter, null, $resultSetPrototype);
             },
         ]
     ]
